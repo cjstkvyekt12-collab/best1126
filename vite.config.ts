@@ -6,8 +6,10 @@ import {defineConfig, loadEnv} from 'vite';
 
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const mapsKey =
+  const rawMapsKey =
     env.VITE_GOOGLE_MAPS_API_KEY || env.GOOGLE_MAPS_API_KEY || '';
+  const mapsKey =
+    rawMapsKey && rawMapsKey !== 'MY_GOOGLE_MAPS_API_KEY' ? rawMapsKey : '';
   return {
     define: mapsKey
       ? {

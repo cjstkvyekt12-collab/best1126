@@ -758,6 +758,18 @@ async function startServer() {
     });
   });
 
+  // 6. Runtime public browser config for Google Maps JS SDK (fixes production builds where env is injected at container startup)
+  app.get('/api/maps-config', (_req: Request, res: Response) => {
+    const rawKey =
+      process.env.VITE_GOOGLE_MAPS_API_KEY ||
+      process.env.GOOGLE_MAPS_API_KEY ||
+      '';
+    const apiKey =
+      rawKey && rawKey !== 'MY_GOOGLE_MAPS_API_KEY' ? rawKey.trim() : '';
+    res.setHeader('Cache-Control', 'no-store');
+    res.json({ apiKey });
+  });
+
   if (IS_PROD) {
     const distPath = path.resolve(__dirname, 'dist');
     app.use(express.static(distPath));
