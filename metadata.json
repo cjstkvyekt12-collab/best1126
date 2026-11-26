@@ -1,0 +1,6 @@
+{
+  "name": "금산 청소년 활동 원스톱 지도",
+  "description": "충남 금산군 청소년 수련·문화·학습·체육·체험 공간을 실시간 지도에서 탐색하고 나만의 활동 코스와 길찾기를 계획하는 원스톱 지도 서비스",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
